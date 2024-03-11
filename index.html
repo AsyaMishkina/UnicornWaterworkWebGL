@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | UnicornWaterwork</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
 
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-     <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
-  </head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+</head>
   <body>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=960 height=600></canvas>
+      <canvas id="unity-canvas" width=960 height=540></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -23,7 +23,7 @@
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">UnicornTennis</div>
+        <div id="unity-build-title">UnicornWaterwork</div>
       </div>
     </div>
     <script>
@@ -59,15 +59,15 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/UnicornTennis_v_2_0_vk_ru.loader.js";
+      var loaderUrl = buildUrl + "/UnicornWaterworkWebGLUncompressed_v_0_0.loader.js";
       var config = {
-        dataUrl: buildUrl + "/UnicornTennis_v_2_0_vk_ru.data",
-        frameworkUrl: buildUrl + "/UnicornTennis_v_2_0_vk_ru.framework.js",
-        codeUrl: buildUrl + "/UnicornTennis_v_2_0_vk_ru.wasm",
+        dataUrl: buildUrl + "/UnicornWaterworkWebGLUncompressed_v_0_0.data",
+        frameworkUrl: buildUrl + "/UnicornWaterworkWebGLUncompressed_v_0_0.framework.js",
+        codeUrl: buildUrl + "/UnicornWaterworkWebGLUncompressed_v_0_0.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "AsyaStudio",
-        productName: "UnicornTennis",
-        productVersion: "2.0vkRu",
+        productName: "UnicornWaterwork",
+        productVersion: "0.1",
         showBanner: unityShowBanner,
       };
 
@@ -86,17 +86,16 @@
         unityShowBanner('WebGL builds are not supported on mobile devices.');
       } else {
         canvas.style.width = "960px";
-        canvas.style.height = "600px";
+        canvas.style.height = "540px";
       }
       loadingBar.style.display = "block";
-var MyUnityAppInstance=null; //Link on established unity-applications on this page
+
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
-            MyUnityAppInstance=unityInstance;//establish link
           loadingBar.style.display = "none";
           fullscreenButton.onclick = () => {
             unityInstance.SetFullscreen(1);
@@ -105,29 +104,28 @@ var MyUnityAppInstance=null; //Link on established unity-applications on this pa
           alert(message);
         });
       };
-      document.body.appendChild(script);
+        document.body.appendChild(script);
 
-      
-      //USER'S code
+        //USER'S code
 
-      function FromUnityToJs (){   // inted from uUnity
-          //alert ("From Unity To Js starts");//this appears in prompt -window in user's browser'
-          console.log("FromUnityToJs in Index.html initialized");//you can see this log in browser when press ctrl+shift+K
-          //window.open("https://asyamishkina.github.io/MyUnityRepository0/index.html")
+        function FromUnityToJs() {   // inted from uUnity
+            //alert ("From Unity To Js starts");//this appears in prompt -window in user's browser'
+            console.log("FromUnityToJs in Index.html initialized");//you can see this log in browser when press ctrl+shift+K
+            //window.open("https://asyamishkina.github.io/MyUnityRepository0/index.html")
 
-          //VKauthorization
-          //window.open("https://oauth.vk.com/authorize?client_id=51732227&display=page&redirect_uri=https://oauth.vk.com/blank.html/callback&scope=friends&response_type=token&v=5.131&state=123456");
-          //returns https://oauth.vk.com/blank.html#access_token=vk1.a.Z5Ybv4tYMVIioz5nLSvm5DvoHTIvhTAP-VtAczUhh17T2cmZiIPCokFcOQY8iGdRVYH246zLcL-bxRQsewIZvwE1Wo3UDNDCoPu-IggDpuxJX7DuMIC1CBFof7mI3NS0Ql5wGZEqXq2jfYFHDS3170M60NWjfC5T0a4TycY8bYPY6P0IRv0ivixSIJ-_BBhk&expires_in=86400&user_id=674720308&state=123456
-          //user ID=user_id=674720308, token:vk1.a.Z5Ybv4tYMVIioz5nLSvm5DvoHTIvhTAP-VtAczUhh17T2cmZiIPCokFcOQY8iGdRVYH246zLcL-bxRQsewIZvwE1Wo3UDNDCoPu-IggDpuxJX7DuMIC1CBFof7mI3NS0Ql5wGZEqXq2jfYFHDS3170M60NWjfC5T0a4TycY8bYPY6P0IRv0ivixSIJ-_BBhk expires(in seconds)=86400
+            //VKauthorization
+            //window.open("https://oauth.vk.com/authorize?client_id=51732227&display=page&redirect_uri=https://oauth.vk.com/blank.html/callback&scope=friends&response_type=token&v=5.131&state=123456");
+            //returns https://oauth.vk.com/blank.html#access_token=vk1.a.Z5Ybv4tYMVIioz5nLSvm5DvoHTIvhTAP-VtAczUhh17T2cmZiIPCokFcOQY8iGdRVYH246zLcL-bxRQsewIZvwE1Wo3UDNDCoPu-IggDpuxJX7DuMIC1CBFof7mI3NS0Ql5wGZEqXq2jfYFHDS3170M60NWjfC5T0a4TycY8bYPY6P0IRv0ivixSIJ-_BBhk&expires_in=86400&user_id=674720308&state=123456
+            //user ID=user_id=674720308, token:vk1.a.Z5Ybv4tYMVIioz5nLSvm5DvoHTIvhTAP-VtAczUhh17T2cmZiIPCokFcOQY8iGdRVYH246zLcL-bxRQsewIZvwE1Wo3UDNDCoPu-IggDpuxJX7DuMIC1CBFof7mI3NS0Ql5wGZEqXq2jfYFHDS3170M60NWjfC5T0a4TycY8bYPY6P0IRv0ivixSIJ-_BBhk expires(in seconds)=86400
 
-          //VKmethods
-          //_VKShowBannerAdM();
-      }
-      //vkBridge functions methods
-     
-     //vkBridge show banner advertisment
+            //VKmethods
+            //_VKShowBannerAdM();
+        }
+        //vkBridge functions methods
+
+        //vkBridge show banner advertisment
         function _VKShowBannerAdM() {
-           vkBridge.send('VKWebAppShowBannerAd', {
+            vkBridge.send('VKWebAppShowBannerAd', {
                 banner_location: 'bottom'
             })
                 .then((data) => {
@@ -142,11 +140,11 @@ var MyUnityAppInstance=null; //Link on established unity-applications on this pa
         }
 
 
-      //EVENTS
-      jQuery(document).ready(function($){ //PAGE DOWNLOADED EVENT
-          vkBridge.send("VKWebAppInit", {});//init VK API
-          FromUnityToJs();
-      });
+        //EVENTS
+        jQuery(document).ready(function ($) { //PAGE DOWNLOADED EVENT
+            vkBridge.send("VKWebAppInit", {});//init VK API
+            FromUnityToJs();
+        });
     </script>
   </body>
 </html>

@@ -6,6 +6,10 @@
     <title>Unity WebGL Player | UnicornWaterwork</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+    
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
@@ -102,6 +106,46 @@
         });
       };
       document.body.appendChild(script);
+
+       //----USER'S code#2
+
+        function FromUnityToJs() {   // inted from uUnity
+            //alert ("From Unity To Js starts");//this appears in prompt -window in user's browser'
+            console.log("FromUnityToJs in Index.html initialized");//you can see this log in browser when press ctrl+shift+K
+            //window.open("https://asyamishkina.github.io/MyUnityRepository0/index.html")
+
+            //VKauthorization
+            //window.open("https://oauth.vk.com/authorize?client_id=51732227&display=page&redirect_uri=https://oauth.vk.com/blank.html/callback&scope=friends&response_type=token&v=5.131&state=123456");
+            //returns https://oauth.vk.com/blank.html#access_token=vk1.a.Z5Ybv4tYMVIioz5nLSvm5DvoHTIvhTAP-VtAczUhh17T2cmZiIPCokFcOQY8iGdRVYH246zLcL-bxRQsewIZvwE1Wo3UDNDCoPu-IggDpuxJX7DuMIC1CBFof7mI3NS0Ql5wGZEqXq2jfYFHDS3170M60NWjfC5T0a4TycY8bYPY6P0IRv0ivixSIJ-_BBhk&expires_in=86400&user_id=674720308&state=123456
+            //user ID=user_id=674720308, token:vk1.a.Z5Ybv4tYMVIioz5nLSvm5DvoHTIvhTAP-VtAczUhh17T2cmZiIPCokFcOQY8iGdRVYH246zLcL-bxRQsewIZvwE1Wo3UDNDCoPu-IggDpuxJX7DuMIC1CBFof7mI3NS0Ql5wGZEqXq2jfYFHDS3170M60NWjfC5T0a4TycY8bYPY6P0IRv0ivixSIJ-_BBhk expires(in seconds)=86400
+
+            //VKmethods
+            _VKShowBannerAdM();
+        }
+        //vkBridge functions methods
+
+        //vkBridge show banner advertisment
+        function _VKShowBannerAdM() {
+            vkBridge.send('VKWebAppShowBannerAd', {
+                banner_location: 'bottom'
+            })
+                .then((data) => {
+                    if (data.result) {
+                        // Ad showed successfully
+                    }
+                })
+                .catch((error) => {
+                    // Failture
+                    console.log(error);
+                });
+        }
+
+
+        //EVENTS
+        jQuery(document).ready(function ($) { //PAGE DOWNLOADED EVENT
+            vkBridge.send("VKWebAppInit", {});//init VK API
+            FromUnityToJs();
+        });
     </script>
   </body>
 </html>
